@@ -31,7 +31,11 @@ public class CompanyProovedora extends Contacto implements Serializable{
     
     @Override
     public String toString() {
-        return super.toString()+"\nNIT: " + NIT +"\nInternacional: " + internacional;
+        String inter = "NO";
+        if(internacional){
+            inter = "SI";
+        }
+        return super.toString()+"\nNIT: " + NIT +"\nInternacional: " + inter;
     }
     
 }

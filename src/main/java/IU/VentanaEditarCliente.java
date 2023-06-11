@@ -3,17 +3,30 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package IU;
-import java.lang.Integer;
-import LOGIC.Agenda;
 import DATA.*;
+import LOGIC.Agenda;
 import javax.swing.JOptionPane;
-
-public class VentanaAgregarContactoCliente extends javax.swing.JFrame {
-
+import java.lang.Integer;
+import java.util.ArrayList;
+/**
+ *
+ * @author David
+ */
+public class VentanaEditarCliente extends javax.swing.JFrame {
+    private static String nombreContacto;
     /**
-     * Creates new form VentanaAgregarContactoCliente
+     * Creates new form VentanaEditarCliente
      */
-    public VentanaAgregarContactoCliente() {
+    
+    public static void setNombreContacto(String nombre){
+        nombreContacto = nombre;
+    }
+    
+    public static String getNombreContacto(){
+        return nombreContacto;
+    }
+    
+    public VentanaEditarCliente() {
         initComponents();
     }
 
@@ -26,53 +39,38 @@ public class VentanaAgregarContactoCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton7 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField(Agenda.buscarContactoPorNombre(nombreContacto).getNombre());
+        jLabel4 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField(Agenda.buscarContactoPorNombre(nombreContacto).getCelularContacto());
+        jLabel5 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField(Agenda.buscarContactoPorNombre(nombreContacto).getEmail());
+        jLabel6 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
+        jTextField4 = new javax.swing.JTextField(((Cliente)Agenda.buscarContactoPorNombre(nombreContacto)).getCedula());
+        jLabel2 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jTextField5 = new javax.swing.JTextField(((Cliente)Agenda.buscarContactoPorNombre(nombreContacto)).getEdad()+"");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cerrar.png"))); // NOI18N
-        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton7MouseClicked(evt);
-            }
-        });
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Viner Hand ITC", 0, 24)); // NOI18N
-        jLabel2.setText("AGENDA");
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/devolver.png"))); // NOI18N
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
-            }
-        });
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Llene los siguientes espacios con los datos del cliente:");
+        jLabel1.setText("Puede editar los campos del contacto:");
+
+        jButton2.setText("Editar contacto");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Nombre:");
@@ -104,30 +102,45 @@ public class VentanaAgregarContactoCliente extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setText("Cedula:");
 
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cerrar.png"))); // NOI18N
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Viner Hand ITC", 0, 24)); // NOI18N
+        jLabel2.setText("AGENDA");
+
         jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel7.setText("Edad:");
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/devolver.png"))); // NOI18N
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Agregar contacto");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
-            }
-        });
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
             }
         });
 
@@ -215,24 +228,33 @@ public class VentanaAgregarContactoCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
-        this.dispose();
-        System.exit(0);
-    }//GEN-LAST:event_jButton7MouseClicked
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        ArrayList <Contacto>listaComparar = new ArrayList(Agenda.getListaContactos());
+        listaComparar.remove(Agenda.buscarContactoPorNombre(nombreContacto));
+        System.out.println(listaComparar);
+        boolean band = true;
+        for(Contacto contacto:listaComparar){
+            if(contacto.getNombre().equals(jTextField1.getText())){
+                
+                band = false;
+            }
+        }
+        
+        if(band){
+            Agenda.editarContactoCliente(nombreContacto,jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField4.getText(), Integer.parseInt(jTextField5.getText()));
+            JOptionPane.showMessageDialog(null, "Se edito el contacto exitosamente!");
+            this.dispose();
+            VentanaEditarContacto ventana = new VentanaEditarContacto();
+            ventana.setVisible(true);
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Ya existe un contacto con ese nombre, seleccione otro");
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
-        this.dispose();
-        VentanaAgregarContacto ventana = new VentanaAgregarContacto();
-        ventana.setVisible(true);
-    }//GEN-LAST:event_jButton1MouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
@@ -246,43 +268,32 @@ public class VentanaAgregarContactoCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        this.dispose();
+        System.exit(0);
+    }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        this.dispose();
+        VentanaEditarContacto ventana = new VentanaEditarContacto();
+        ventana.setVisible(true);
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
-
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        Boolean band = true;
-        String nombre = jTextField1.getText();
-     
-        for(int i=0;i<Agenda.getListaContactos().size();i++){
-            System.out.println(((Contacto)Agenda.getListaContactos().get(i)).getNombre());
-            System.out.println(nombre);
-            String nombreComparar = ((Contacto)Agenda.getListaContactos().get(i)).getNombre();
-            if(nombreComparar.equals(nombre)){
-                band = false;
-            }
-        }
-        if(band){
-            int textoEdad = 0;
-            if(!jTextField5.getText().equals("")){
-                textoEdad = Integer.parseInt(jTextField5.getText());
-            }
-            
-            Agenda.guardarContacto(new Cliente(nombre,jTextField2.getText(),jTextField3.getText(),jTextField4.getText(), textoEdad));
-            JOptionPane.showMessageDialog(null, "Se agrego el contacto exitosamente!");
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "El contacto ya existe");
-        }
-    }//GEN-LAST:event_jButton2MouseClicked
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -301,20 +312,20 @@ public class VentanaAgregarContactoCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaAgregarContactoCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaEditarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaAgregarContactoCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaEditarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaAgregarContactoCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaEditarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaAgregarContactoCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaEditarCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaAgregarContactoCliente().setVisible(true);
+                new VentanaEditarCliente().setVisible(true);
             }
         });
     }

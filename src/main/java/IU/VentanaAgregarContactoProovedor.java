@@ -252,15 +252,19 @@ public class VentanaAgregarContactoProovedor extends javax.swing.JFrame {
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         Boolean internacional = (jComboBox1.getSelectedItem().toString()=="SI") ? true : false;
         Boolean band = true;
+        String nombre = jTextField1.getText();
         for(int i=0;i<Agenda.getListaContactos().size();i++){
             System.out.println(((Contacto)Agenda.getListaContactos().get(i)).getNombre());
-            System.out.println(jTextField1.getText());
-            if(((Contacto)Agenda.getListaContactos().get(i)).getNombre().equals(jTextField1.getText())){
+            System.out.println(nombre);
+            String nombreComparar = ((Contacto)Agenda.getListaContactos().get(i)).getNombre();
+            
+            if(nombreComparar.equals(nombre)){
                 band = false;
             }
         }
         if(band){
-            LOGIC.Agenda.guardarContacto(new CompanyProovedora(jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField4.getText(),internacional));
+
+            LOGIC.Agenda.guardarContacto(new CompanyProovedora(nombre,jTextField2.getText(),jTextField3.getText(),jTextField4.getText(),internacional));
             JOptionPane.showMessageDialog(null, "Se agrego el contacto exitosamente!");
         }
         else{

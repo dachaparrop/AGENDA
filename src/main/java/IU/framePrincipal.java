@@ -54,6 +54,11 @@ public class framePrincipal extends javax.swing.JFrame {
         });
 
         jButton2.setText("Editar contacto");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         jButton3.setText("Eliminar contacto");
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -201,6 +206,9 @@ public class framePrincipal extends javax.swing.JFrame {
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         System.out.println(LOGIC.Agenda.getListaContactos());
+        this.dispose();
+        VentanaBuscarContacto ventana = new VentanaBuscarContacto();
+        ventana.setVisible(true);
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -212,6 +220,12 @@ public class framePrincipal extends javax.swing.JFrame {
         VentanaEliminarContacto ventana = new VentanaEliminarContacto();
         ventana.setVisible(true);
     }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        this.dispose();
+        VentanaEditarContacto ventana = new VentanaEditarContacto();
+        ventana.setVisible(true);
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param args the command line arguments

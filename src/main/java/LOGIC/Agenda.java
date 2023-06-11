@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import DATA.*;
 import IU.*;
+import java.util.Arrays;
 public class Agenda {
     
     private static ArrayList<Contacto> listaContactos = new ArrayList<Contacto>();
@@ -17,7 +18,7 @@ public class Agenda {
         for(int i=0;i<listaContactos.size();i++){
             listaNombres[i] = listaContactos.get(i).getNombre();
         }
-        
+        Arrays.sort(listaNombres);
         return listaNombres;
     }
     
@@ -90,14 +91,30 @@ public class Agenda {
         }
     }
     
-    public static void eliminarContacto(String nombre){
-        Contacto contactoEliminar = null;
+    public static Contacto buscarContactoPorNombre(String nombre){
+        Contacto contactoEncontrado = null;
         for(Contacto contacto:listaContactos){
             if(contacto.getNombre().equals(nombre)){
-                contactoEliminar = contacto;
+                contactoEncontrado = contacto;
             }
         }
-        listaContactos.remove(contactoEliminar);
+        return contactoEncontrado;
+    }
+    
+    public static void eliminarContacto(String nombre){
+        listaContactos.remove(buscarContactoPorNombre(nombre));
+    }
+    
+    public static void editarContactoCliente(String nombre, String nuevoNombre, String celular, String email, String cedula, int edad){
+        Contacto cliente = buscarContactoPorNombre(nombre);
+        Cliente clienteEditado = new Cliente(nuevoNombre, celular, email, cedula, edad);
+        listaContactos.set(listaContactos.indexOf(cliente), clienteEditado);
+    }
+    
+    public static void editarContactoProovedor(String nombre, String nuevoNombre, String celular, String email, String NIT, Boolean internacional){
+        Contacto proovedor = buscarContactoPorNombre(nombre);
+        CompanyProovedora proovedorEditado = new CompanyProovedora(nuevoNombre, celular, email, NIT, internacional);
+        listaContactos.set(listaContactos.indexOf(proovedor), proovedorEditado);
     }
     
     public static void guardarContacto(Contacto contacto){

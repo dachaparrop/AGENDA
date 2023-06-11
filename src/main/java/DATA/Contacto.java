@@ -42,7 +42,7 @@ public abstract class Contacto implements Serializable{
     
     @Override
     public String toString() {
-        return "Nombre: " + nombre + "\nCelularContacto: " + celularContacto + "\nEmail: " + email;
+        return "Nombre: " + nombre + "\nCelular contacto: " + celularContacto + "\nEmail: " + email;
     }
 
     
